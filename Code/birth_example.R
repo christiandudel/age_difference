@@ -82,6 +82,7 @@
     ggplot( ) +
     geom_tile(aes(mage, fage, fill= low)) +
     scale_y_continuous(breaks=seq(15,55,10),limits=c(-45,60))+
+    geom_line(data=data.frame(x=15:49,y=rep(37,length(15:49))),aes(x,y))+
     labs(x="Maternal age",y="Paternal age")+
     scale_fill_viridis(discrete=F,guide="none")+
     theme_ipsum() +
@@ -91,6 +92,7 @@
   fig2 <- risk |> filter(mage%in%15:49 & fage%in%15:59) |>  
     ggplot( ) +
     geom_tile(aes(mage, diff, fill= low)) +
+    geom_line(data=data.frame(x=15:49,y=15:49-37),aes(x,y))+
     scale_y_continuous(breaks=seq(-45,25,10),limits=c(-45,60))+
     labs(x="Maternal age",y="Age difference")+
     scale_fill_viridis(discrete=F)+
@@ -98,4 +100,7 @@
     theme(panel.grid.minor = element_blank())
   
   fig3 <- fig1 + fig2
+  
+  
+### Models #####################################################################  
   
