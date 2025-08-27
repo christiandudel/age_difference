@@ -112,7 +112,9 @@
   
   # Save
   fig3 <- fig1 + fig2
-  ggsave(plot=fig3,file="Results/fig2.png")
+  ggsave(plot=fig3,file="Results/fig2.png",
+         width=7,
+         height=7)
   
   
 ### Models #####################################################################  
@@ -542,27 +544,27 @@
   risk6$low <- predict(fit6,risk)
   
   # Give names
-  risknames <- c("Observed","Pat. age, linear","Pat. age, interaction","Pat. age, piecewise constant",
-                 "Age diff., linear","Age diff., interaction","Age diff., piecewise constant")
+  risknames <- c("Pat. age, linear","Pat. age, interaction","Pat. age, piecewise constant",
+                 "Age diff., linear","Age diff., interaction","Age diff., piecewise constant","Observed")
   
-  risk$type <- risknames[1]
-  risk1$type <- risknames[2]
-  risk2$type <- risknames[3]
-  risk3$type <- risknames[4]
-  risk4$type <- risknames[5]
-  risk5$type <- risknames[6]
-  risk6$type <- risknames[7]
+  risk1$type <- risknames[1]
+  risk2$type <- risknames[2]
+  risk3$type <- risknames[3]
+  risk4$type <- risknames[4]
+  risk5$type <- risknames[5]
+  risk6$type <- risknames[6]
+  risk$type <- risknames[7]
   
   # Combine
-  combined <- rbind(risk,risk1,risk2,risk3,risk4,risk5,risk6)
+  combined <- rbind(risk1,risk2,risk3,risk4,risk5,risk6,risk)
   combined$type <- factor(combined$type,
                           levels=risknames)
   
   # Plot
-  fig4 <- combined |> filter(mage%in%15:49 & fage%in%15:59 & type!="Observed") |>  
+  fig4 <- combined |> filter(mage%in%15:49 & fage%in%15:59 ) |>  
     ggplot( ) +
     geom_tile(aes(mage, fage, fill= low)) +
-    facet_wrap(~type)+
+    facet_wrap(~type,ncol=3)+
     scale_y_continuous(breaks=seq(15,55,10),limits=c(15,55))+
     labs(x="Maternal age",y="Paternal age")+
     scale_fill_viridis(discrete=F,rescaler = rescaler)+
@@ -570,4 +572,7 @@
     theme(panel.grid.minor = element_blank())
   
   # Save
-  ggsave(plot=fig4,file="Results/fig3.png")
+  ggsave(plot=fig4,file="Results/fig3.png",
+         width=10,
+         height=10)
+  
