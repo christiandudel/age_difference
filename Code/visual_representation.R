@@ -21,7 +21,7 @@
     geom_tile(aes(X, Y, fill= Z)) +
     scale_y_continuous(breaks=c(1,2,3),limits=c(-3,4))+
     geom_label(aes(X, Y,label=label),alpha=0.7)+
-    labs(x="Age 1",y="Age 2")+
+    labs(x="Maternal age",y="Paternal age")+
     scale_fill_viridis(discrete=T,guide="none")+
     theme_ipsum() +
     theme(panel.grid.minor = element_blank())
@@ -32,7 +32,7 @@
     scale_y_continuous(breaks=seq(-2,2,1),limits=c(-3,4))+
     scale_fill_viridis(discrete=T,guide="none")+
     geom_label(aes(X, D,label=label),alpha=0.7)+
-    labs(x="Age 1",y="Age difference")+
+    labs(x="Maternal age",y="Age difference")+
     theme_ipsum()+
     theme(panel.grid.minor = element_blank())
   
