@@ -36,13 +36,24 @@
     theme_ipsum()+
     theme(panel.grid.minor = element_blank())
   
+  # Age + age difference
+  fig3 <- dat |>  ggplot( ) +
+    geom_tile(aes(Y, D, fill= Z)) +
+    scale_y_continuous(breaks=seq(-2,2,1),limits=c(-3,4))+
+    scale_fill_viridis(discrete=T,guide="none")+
+    geom_label(aes(Y, D,label=label),alpha=0.7)+
+    labs(x="Paternal age",y="Age difference")+
+    theme_ipsum()+
+    theme(panel.grid.minor = element_blank())
+  
+  
   # Plot
-  fig3 <- fig1 | fig2
+  fig_combined <- fig1 | fig2 | fig3
   
   # Save
-  ggsave(plot=fig3,
+  ggsave(plot=fig_combined,
          file="Results/fig1.png",
-         width=7,
-         height=7)
+         width=10,
+         height=10)
   
   
