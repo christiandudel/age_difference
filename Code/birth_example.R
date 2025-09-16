@@ -175,6 +175,12 @@
   
   rm(select);gc()
   
+  # AIC of the simple linear models is equal
+  AIC(fit1);AIC(fit4);AIC(fit7)
+  # For other models: not the same but extremely close
+  AIC(fit2);AIC(fit5);AIC(fit8)
+  AIC(fit3);AIC(fit6);AIC(fit9)
+  
   
 ### Predict ####################################################################  
 
@@ -216,9 +222,9 @@
   risk9$low <- predict(fit9,predictrisk,type="response")
   
   # Give names
-  risknames <- c("M+F, linear","M+F, non-linear","M+F, piecewise",
+  risknames <- c("M+P, linear","M+P, non-linear","M+P, piecewise",
                  "M+D, linear","M+D, non-linear","M+D, piecewise",
-                 "F+D, linear","F+D, non-linear","F+D, piecewise",
+                 "P+D, linear","P+D, non-linear","P+D, piecewise",
                  "Observed")
   
   risk1$type <- risknames[1]
