@@ -82,25 +82,29 @@
                        Model=c(rep("M-P",length(result1)),rep("M-D",length(result1))))
 
   # Save
-  save(result,file="Results/simulations.rda")
+  save(list=c("result","result3","sizes"),
+       file="Results/simulations.rda")
   
     
 ### Plotting ###################################################################  
 
-  
   # Plot
   fig1 <- result |> ggplot(aes(x=samplesize,y=pvalue,col=Model)) +
-            geom_line() +labs(x="Sample size",y="Average p-value")+
-            theme_ipsum() +
-            theme(panel.grid.minor = element_blank())
+                    geom_line(data=data.frame(x=seq(250,100000,by=250),
+                                              y=rep(0.05,length(seq(250,100000,by=250)))),
+                              aes(x,y,col=NULL),col="grey50",linetype=2)+
+                    geom_line() +
+                    labs(x="Sample size",y="Average p-value")+
+                    theme_ipsum() +
+                    theme(panel.grid.minor = element_blank())
     
     
   # Combine results for plotting (proportion)
-  result <- data.frame(samplesize=sizes,
+  plotresult <- data.frame(samplesize=sizes,
                        proportion=result3)
   
   # Plot
-  fig2 <- result |> ggplot(aes(x=samplesize,y=proportion)) +
+  fig2 <- plotresult |> ggplot(aes(x=samplesize,y=proportion)) +
     geom_line() +labs(x="Sample size",y="Proportion p1<0.05 & p2>=0.05")+
     theme_ipsum() +
     theme(panel.grid.minor = element_blank())
