@@ -3,8 +3,8 @@
 Contact: Christian Dudel, dudel@demogr.mpg.de 
 
 The age difference between two persons is often of interest as an exposure in 
-epidemiologic research. The association of the age difference between mother 
-and father and child health outcomes is an example. The code in this repository
+epidemiologic research. The age difference between mother and father and how it 
+affects child health outcomes is an example. The code in this repository
 shows that there are three key issues when using age differences as an exposure.
 
 The file 'visual_representation.R' provides figures which demonstrate the
