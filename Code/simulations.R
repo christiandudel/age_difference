@@ -111,6 +111,6 @@
 
   # Combine and save
   fig_combined <- fig1 / fig2 
-  ggsave(plot=fig_combined,file="Results/fig_sim.png",
+  ggsave(plot=fig_combined,file="Results/fig_S1.png",
          width=12,
          height=7)

@@ -16,13 +16,18 @@
   dat$D <- dat$X-dat$Y
   dat$label <- paste0("(",dat$X,",",dat$Y,",",dat$D,")")
   
+  scalecolors <- c("#fc9272","#de2d26","#a50f15",
+                   "#a1d99b","#31a354","#006d2c",
+                   "#9ecae1","#3182bd","#08519c")
+  
   # Age + age
   fig1 <- dat |>  ggplot( ) +
     geom_tile(aes(X, Y, fill= Z)) +
     scale_y_continuous(breaks=c(1,2,3),limits=c(-3,4))+
     geom_label(aes(X, Y,label=label),alpha=0.7)+
     labs(x="Maternal age",y="Paternal age")+
-    scale_fill_viridis(discrete=T,guide="none")+
+    #scale_fill_viridis(discrete=T,guide="none")+
+    scale_fill_manual(values=scalecolors,guide="none")+
     theme_ipsum() +
     theme(panel.grid.minor = element_blank())
   
@@ -30,7 +35,8 @@
   fig2 <- dat |>  ggplot( ) +
     geom_tile(aes(X, D, fill= Z)) +
     scale_y_continuous(breaks=seq(-2,2,1),limits=c(-3,4))+
-    scale_fill_viridis(discrete=T,guide="none")+
+    #scale_fill_viridis(discrete=T,guide="none")+
+    scale_fill_manual(values=scalecolors,guide="none")+
     geom_label(aes(X, D,label=label),alpha=0.7)+
     labs(x="Maternal age",y="Age difference")+
     theme_ipsum()+
@@ -40,7 +46,8 @@
   fig3 <- dat |>  ggplot( ) +
     geom_tile(aes(Y, D, fill= Z)) +
     scale_y_continuous(breaks=seq(-2,2,1),limits=c(-3,4))+
-    scale_fill_viridis(discrete=T,guide="none")+
+    #scale_fill_viridis(discrete=T,guide="none")+
+    scale_fill_manual(values=scalecolors,guide="none")+
     geom_label(aes(Y, D,label=label),alpha=0.7)+
     labs(x="Paternal age",y="Age difference")+
     theme_ipsum()+
