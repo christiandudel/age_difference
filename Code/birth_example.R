@@ -157,6 +157,14 @@
                        piecemf=interaction(dmage,dfage),
                        piecemd=interaction(dmage,ddiff),
                        piecefd=interaction(dfage,ddiff))
+  
+  # Simple OLS for identification problem example
+  fitident <- lm(weight~mage+fage,data=select)
+  # alpha=3200
+  # m=3
+  # p=-3
+  # 3200 + 3 * 20 + -1*25 + 0 * (20-25)
+  # 3200 + (3-1) * 20 + (-1+1)*25 + (0+1) * (20-25)
 
   # Estimate models maternal + paternal age
   fit1 <- glm(low~mage+fage,data=select,family = binomial(link = "logit"))
