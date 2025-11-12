@@ -4,7 +4,6 @@
 
   library(tidyverse)
   library(hrbrthemes)
-  library(viridis)
   library(patchwork)
 
 
