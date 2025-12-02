@@ -130,6 +130,11 @@
          width=12,
          height=7)
   
+  # ggsave(plot=fig_combined,
+  #        file="U:/Documents/__PAPERS__/Age difference note/Figures/fig2.tiff",
+  #        width=12,
+  #        height=7)
+  
   
 ### Models #####################################################################  
 
@@ -283,6 +288,12 @@
          width=12,
          height=12,
          bg="white")
+  
+  # ggsave(plot=fig4,
+  #        file="U:/Documents/__PAPERS__/Age difference note/Figures/fig3.tiff",
+  #        width=12,
+  #        height=12)
+  
   
   
 ### Non-linear with- and without interactions ##################################

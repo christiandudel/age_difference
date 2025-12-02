@@ -62,4 +62,8 @@
          width=10,
          height=10)
   
+  # ggsave(plot=fig_combined,
+  #        file="U:/Documents/__PAPERS__/Age difference note/Figures/fig1.tiff",
+  #        width=10,
+  #        height=10)
   
