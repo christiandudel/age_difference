@@ -88,13 +88,15 @@
   
 ### Visualize ##################################################################  
 
+  selectedage <- 35
+  
   # Plot 1
   fig1 <- risk |> filter(mage%in%15:49 & fage%in%15:59) |>  
     ggplot( ) +
     geom_tile(aes(mage, fage, fill= low)) +
     scale_y_continuous(breaks=seq(15,55,10),limits=c(-45,60))+
     scale_x_continuous(breaks=seq(20,50,10),limits=c(15,60))+
-    geom_line(data=data.frame(x=15:49,y=rep(37,length(15:49))),aes(x,y))+
+    geom_line(data=data.frame(x=15:49,y=rep(selectedage,length(15:49))),aes(x,y))+
     labs(x="Maternal age",y="Paternal age")+
     scale_fill_viridis(discrete=F,guide="none",rescaler = rescaler)+
     theme_ipsum() +
@@ -104,7 +106,7 @@
   fig2 <- risk |> filter(mage%in%15:49 & fage%in%15:59) |>  
     ggplot( ) +
     geom_tile(aes(mage, diff, fill= low)) +
-    geom_line(data=data.frame(x=15:49,y=15:49-37),aes(x,y))+
+    geom_line(data=data.frame(x=15:49,y=15:49-selectedage),aes(x,y))+
     scale_x_continuous(breaks=seq(20,50,10),limits=c(15,60))+
     scale_y_continuous(breaks=seq(-45,25,10),limits=c(-45,60))+
     labs(x="Maternal age",y="Age difference")+
@@ -116,7 +118,7 @@
   fig3 <- risk |> filter(mage%in%15:49 & fage%in%15:59) |>  
     ggplot( ) +
     geom_tile(aes(fage, diff, fill= low)) +
-    geom_line(data=data.frame(x=rep(37,length(15:49-37)),y=15:49-37),aes(x,y))+
+    geom_line(data=data.frame(x=rep(37,length(15:49-selectedage)),y=15:49-selectedage),aes(x,y))+
     scale_y_continuous(breaks=seq(-45,25,10),limits=c(-45,60))+
     scale_x_continuous(breaks=seq(20,60,10),limits=c(15,60))+
     labs(x="Paternal age",y="Age difference")+
