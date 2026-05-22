@@ -137,6 +137,41 @@
   #        width=12,
   #        height=7)
   
+  # For EPC
+  fig1a <- risk |> filter(mage%in%15:49 & fage%in%15:59) |>  
+    ggplot( ) +
+    geom_tile(aes(mage, fage, fill= low)) +
+    scale_y_continuous(breaks=seq(15,55,10),limits=c(-45,60))+
+    scale_x_continuous(breaks=seq(20,50,10),limits=c(15,60))+
+    labs(x="Maternal age",y="Paternal age")+
+    scale_fill_viridis(discrete=F,guide="none",rescaler = rescaler)+
+    theme_ipsum() +
+    theme(panel.grid.minor = element_blank())
+  fig2a <- risk |> filter(mage%in%15:49 & fage%in%15:59) |>  
+    ggplot( ) +
+    geom_tile(aes(mage, diff, fill= low)) +
+    scale_x_continuous(breaks=seq(20,50,10),limits=c(15,60))+
+    scale_y_continuous(breaks=seq(-45,25,10),limits=c(-45,60))+
+    labs(x="Maternal age",y="Age difference")+
+    scale_fill_viridis(discrete=F,guide="none",rescaler = rescaler)+
+    theme_ipsum() +
+    theme(panel.grid.minor = element_blank())
+  fig3a <- risk |> filter(mage%in%15:49 & fage%in%15:59) |>  
+    ggplot( ) +
+    geom_tile(aes(fage, diff, fill= low)) +
+    scale_y_continuous(breaks=seq(-45,25,10),limits=c(-45,60))+
+    scale_x_continuous(breaks=seq(20,60,10),limits=c(15,60))+
+    labs(x="Paternal age",y="Age difference")+
+    scale_fill_viridis(discrete=F,rescaler = rescaler)+
+    theme_ipsum() +
+    theme(panel.grid.minor = element_blank())
+  
+  
+  fig_combineda <- fig1a + fig2a + fig3a
+  ggsave(plot=fig_combineda,file="U:/Documents/__PRESENTATIONS__/Presentation EPC 2026/fig_extra1.png",
+         width=12,
+         height=7)
+  
   
 ### Models #####################################################################  
 
@@ -296,6 +331,20 @@
   #        width=12,
   #        height=12)
   
+  # For EPC
+  fig5 <- combined |> filter(mage%in%15:49 & fage%in%15:59 & type%in%c("M+P, non-linear","M+D, non-linear","P+D, non-linear","Observed")) |>  
+    ggplot( ) +
+    geom_tile(aes(mage, fage, fill= low)) +
+    facet_wrap(~type,ncol=2)+
+    scale_y_continuous(breaks=seq(15,55,10),limits=c(15,55))+
+    labs(x="Maternal age",y="Paternal age")+
+    scale_fill_viridis(discrete=F,rescaler = rescaler)+
+    theme_ipsum() +
+    theme(panel.grid.minor = element_blank())
+  ggsave(plot=fig5,file="U:/Documents/__PRESENTATIONS__/Presentation EPC 2026/fig_extra2.png",
+         width=8,
+         height=8,
+         bg="white")
   
   
 ### Non-linear with- and without interactions ##################################
